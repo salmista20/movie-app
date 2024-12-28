@@ -1,0 +1,27 @@
+<p>movie-create works!</p>
+<form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="title">Title:</label>
+    <input id="title" formControlName="title" />
+    <div *ngIf="movieForm.get('title')?.invalid && movieForm.get('title')?.touched">
+      Title is required.
+    </div>
+  </div>
+  <div>
+    <label for="description">Description:</label>
+    <textarea id="description" formControlName="description"></textarea>
+    <div *ngIf="movieForm.get('description')?.invalid && movieForm.get('description')?.touched">
+      Description is required.
+    </div>
+  </div>
+  <div>
+    <label for="releaseDate">Release Date:</label>
+    <input id="releaseDate" type="date" formControlName="releaseDate" />
+    <div *ngIf="movieForm.get('releaseDate')?.invalid && movieForm.get('releaseDate')?.touched">
+      Release date is required.
+    </div>
+  </div>
+  <button type="submit" [disabled]="movieForm.invalid">Create Movie</button>
+</form>
+<div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>

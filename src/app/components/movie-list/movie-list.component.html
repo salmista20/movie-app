@@ -1,0 +1,8 @@
+<p>movie-list works!</p>
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+<ul>
+  <li *ngFor="let movie of movies">
+    {{ movie.title }}
+    <button routerLink="/details/{{ movie.id }}">View Details</button>
+  </li>
+</ul>
